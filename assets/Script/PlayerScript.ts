@@ -21,9 +21,9 @@ export default class PlayerScript extends cc.Component {
     // onLoad () {}
 
     start () {
-        var node = this.node;
-        node.on(cc.Node.EventType.MOUSE_DOWN, function (event) {
-        console.log('Mouse down');
+        //移动
+        this.node.on(cc.Node.EventType.MOUSE_MOVE, function (event) {
+            this.node.setPosition(event.getLocation())
         }, this);
     }
 

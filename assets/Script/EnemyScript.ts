@@ -7,7 +7,7 @@
 /**
  * 敌人
  */
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
 export default class EnemyScript extends cc.Component {
@@ -25,18 +25,18 @@ export default class EnemyScript extends cc.Component {
 
     // onLoad () {}
 
-    start () {
+    start() {
 
     }
 
-    update (dt) {
+    update(dt) {
         //向下移动
-        if(this.isDead == false){
+        if (this.isDead == false) {
             this.node.y -= 300 * dt;
         }
-        
+
         var bgheight = 1280;
-        if(this.node.y < -bgheight){
+        if (this.node.y < -bgheight) {
             this.node.destroy()
         }
     }
@@ -44,15 +44,15 @@ export default class EnemyScript extends cc.Component {
     /**
      * 被子弹碰撞后
      */
-    onCollisionByBullet(){
-        this.isDead =true;
+    onCollisionByBullet() {
+        this.isDead = true;
 
         //动态加载爆炸图片
-        cc.loader.loadRes("bg/gameArts-android",cc.SpriteAtlas,(err,atlas:cc.SpriteAtlas)=>{
+        cc.loader.loadRes("bg/gameArts-android", cc.SpriteAtlas, (err, atlas: cc.SpriteAtlas) => {
             const frame = atlas.getSpriteFrame('enemy1_blowup_1');
             this.node.getComponent(cc.Sprite).spriteFrame = frame;
         })
-        
+
         //延时销毁
         setTimeout(() => {
             this.node.destroy();

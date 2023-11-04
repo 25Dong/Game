@@ -7,7 +7,7 @@
 
 import EnemyScript from "./EnemyScript";
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 /**
  *子弹
@@ -29,15 +29,15 @@ export default class Bullet extends cc.Component {
 
     // onLoad () {}
 
-    start () {
+    start() {
 
     }
 
-    update (dt) {
+    update(dt) {
         var bgheight = 1280;
         this.node.y += this.speed * dt;
         //如果超出屏幕的边界就销毁
-        if(this.node.y > bgheight){
+        if (this.node.y > bgheight) {
             this.node.destroy()
         }
     }
@@ -46,8 +46,8 @@ export default class Bullet extends cc.Component {
      * 子弹发生碰撞会自动回调
      * @param enemy 被字段碰撞到物品（敌人）
      */
-    onCollisionEnter(enemy){
-        if(enemy.tag == 1){
+    onCollisionEnter(enemy) {
+        if (enemy.tag == 1) {//1为子弹预设体的类型
             //碰撞到子弹
             enemy.getComponent(EnemyScript).onCollisionByBullet();
             //子弹销毁

@@ -1,3 +1,4 @@
+import BirdScript from "./BirdScript";
 
 const {ccclass, property} = cc._decorator;
 
@@ -15,8 +16,17 @@ export default class BackgroundAndLandScript extends cc.Component {
     @property
     width: number = 288;
 
-    start () {
+    //小鸟脚本(从界面拖动小鸟节点给该属性赋值)
+    @property(BirdScript)
+    birdScrpt: BirdScript = null;
 
+    start () {
+        //点击监听
+        for(let node of this.node.children){
+            node.on(cc.Node.EventType.MOUSE_DOWN,()=>{
+                this.birdScrpt.fly();
+            })
+        }
     }
 
     update(dt) {

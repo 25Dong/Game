@@ -23,7 +23,7 @@ export default class BackgroundAndLandScript extends cc.Component {
         //向左移动
         for(let node of this.node.children){
             node.x -= dt * this.speed;
-            if(node.x < this.width){
+            if(node.x < -this.width){
                 node.x += this.width * 2;
             }
         }

@@ -26,6 +26,9 @@ export default class BackgroundAndLandScript extends cc.Component {
             node.on(cc.Node.EventType.MOUSE_DOWN,()=>{
                 this.birdScrpt.fly();
             })
+            node.on(cc.Node.EventType.TOUCH_START,()=>{
+                this.birdScrpt.fly();
+            })
         }
     }
 

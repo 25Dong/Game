@@ -35,7 +35,11 @@ export default class PipeScript extends cc.Component {
             node.x -= dt * this.speed;
             if (node.x < -257) {
                 node.x = 288;
+                //调整管道位置
                 node.y = Math.random() * 100 - 30;
+                let pipeUpNode = node.children[0];
+                pipeUpNode.y +=Math.random() + 60;
+                console.log("pipeUpNode {}",pipeUpNode)
             }
         }
     }

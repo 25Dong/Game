@@ -1,5 +1,8 @@
+import BirdScript from "./BirdScript";
 
 const { ccclass, property } = cc._decorator;
+
+
 /**
  * 管道
  */
@@ -19,12 +22,20 @@ export default class PipeScript extends cc.Component {
     }
 
     update(dt) {
+        //如果游戏结束了管道就不用移动了
+        const scene = cc.director.getScene();
+        const birdNode = scene.getChildByName("bird");
+        const gameOver = birdNode.getComponent(BirdScript).isGameOver();
+        if (gameOver) {
+            return;
+        }
+
         //向左移动
         for (let node of this.node.children) {
             node.x -= dt * this.speed;
             if (node.x < -257) {
-                node.x =288;
-                node.y = Math.random() * 100-30;
+                node.x = 288;
+                node.y = Math.random() * 100 - 30;
             }
         }
     }

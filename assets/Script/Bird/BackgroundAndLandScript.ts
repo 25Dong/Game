@@ -1,6 +1,6 @@
 import BirdScript from "./BirdScript";
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 /**
  * 背景和地面的脚本
@@ -20,13 +20,15 @@ export default class BackgroundAndLandScript extends cc.Component {
     @property(BirdScript)
     birdScrpt: BirdScript = null;
 
-    start () {
-        //点击监听
-        for(let node of this.node.children){
-            node.on(cc.Node.EventType.MOUSE_DOWN,()=>{
+    start() {
+        for (let node of this.node.children) {
+            //鼠标点击监听
+            node.on(cc.Node.EventType.MOUSE_DOWN, () => {
                 this.birdScrpt.fly();
             })
-            node.on(cc.Node.EventType.TOUCH_START,()=>{
+
+            //触摸监听
+            node.on(cc.Node.EventType.TOUCH_END, () => {
                 this.birdScrpt.fly();
             })
         }
@@ -34,9 +36,9 @@ export default class BackgroundAndLandScript extends cc.Component {
 
     update(dt) {
         //向左移动
-        for(let node of this.node.children){
+        for (let node of this.node.children) {
             node.x -= dt * this.speed;
-            if(node.x < -this.width){
+            if (node.x < -this.width) {
                 node.x += this.width * 2;
             }
         }

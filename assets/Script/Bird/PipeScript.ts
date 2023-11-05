@@ -38,8 +38,7 @@ export default class PipeScript extends cc.Component {
                 //调整管道位置
                 node.y = Math.random() * 100 - 30;
                 let pipeUpNode = node.children[0];
-                pipeUpNode.y +=Math.random() + 60;
-                console.log("pipeUpNode {}",pipeUpNode)
+                pipeUpNode.y += Math.random() + 40;
             }
         }
     }

@@ -55,6 +55,9 @@ export default class BirdScript extends cc.Component {
      * 2.飞出屏幕顶部
      */
     gameOver() {
+        if (this.stop) {
+            return;
+        }
         console.info("gameOver")
         this.stop = true;
     }

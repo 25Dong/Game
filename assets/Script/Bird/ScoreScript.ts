@@ -24,4 +24,8 @@ export default class ScoreScript extends cc.Component {
     increaseScore(){
         this.score++;
     }
+
+    getScore(): number{
+        return this.score;
+    }
 }

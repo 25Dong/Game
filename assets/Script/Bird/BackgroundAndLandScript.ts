@@ -1,4 +1,5 @@
 import BirdScript from "./BirdScript";
+import ScoreScript from "./ScoreScript";
 
 const { ccclass, property } = cc._decorator;
 
@@ -20,6 +21,10 @@ export default class BackgroundAndLandScript extends cc.Component {
     @property(BirdScript)
     birdScrpt: BirdScript = null;
 
+    //分数脚本
+    @property(ScoreScript)
+    scoreScript: ScoreScript = null;
+
     start() {
         for (let node of this.node.children) {
             //鼠标点击监听
@@ -37,7 +42,9 @@ export default class BackgroundAndLandScript extends cc.Component {
     update(dt) {
         //向左移动
         for (let node of this.node.children) {
-            node.x -= dt * this.speed;
+            const score = this.scoreScript.getScore();
+            const curSpeed = this.speed + Math.min(score / 5, 5);
+            node.x -= dt * curSpeed;
             if (node.x < -this.width) {
                 node.x += this.width * 2;
             }

@@ -1,3 +1,4 @@
+import ScoreScript from "./ScoreScript";
 
 
 const { ccclass, property } = cc._decorator;
@@ -34,12 +35,15 @@ export default class BirdScript extends cc.Component {
     }
 
     fly() {
-        this.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, 150);
+        this.getComponent(cc.RigidBody).linearVelocity = cc.v2(0, 120);
     }
 
     onBeginContact(contact, self, other) {
         if (other.tag == 1) {
-            console.info("+1");
+            //+1分
+            const scene = cc.director.getScene();
+            const birdNode = scene.getChildByName("scoreNode");
+            birdNode.getComponent(ScoreScript).increaseScore();
         } else {
             this.gameOver();
         }

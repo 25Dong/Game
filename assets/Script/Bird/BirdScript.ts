@@ -1,3 +1,4 @@
+import GameLisfScrip from "./GameLifeScript";
 import ScoreScript from "./ScoreScript";
 
 
@@ -8,6 +9,11 @@ const { ccclass, property } = cc._decorator;
  */
 @ccclass
 export default class BirdScript extends cc.Component {
+
+    
+    //生命周期(从界面拖动游戏结束按钮节点)
+    @property(GameLisfScrip)
+    gameLifeScriot: GameLisfScrip = null;
 
     //超出屏幕顶部的位置
     overTop: number = 500;
@@ -60,6 +66,8 @@ export default class BirdScript extends cc.Component {
         }
         console.info("gameOver")
         this.stop = true;
+        //广播游戏结束事件
+        this.gameLifeScriot.afterGameOver();
     }
 
     /**

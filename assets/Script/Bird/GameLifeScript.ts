@@ -1,5 +1,5 @@
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 /**
  * 生命周期
@@ -9,29 +9,45 @@ export default class GameLisfScrip extends cc.Component {
 
 
     onLoad() {
-        this.hiddenButton();
+        console.info("onLoad");
+        this.hiddenGameOverButton();
     }
 
-    start () {
+    start() {
 
     }
 
     // update (dt) {}
 
-    afterGameOver(){
-        this.showButton();
+    afterGameOver() {
+        this.showGameOverButton();
     }
 
-    showButton(){
-        this.node.active =true;
+    showGameOverButton() {
+        var nodeName = this.node.name;
+        console.log("cur nodeName is {}",nodeName);
+        if(nodeName== 'gameOver'){
+            this.node.active = true;
+        }
     }
 
-    hiddenButton(){
-        // this.node.active =false;
+    hiddenGameOverButton() {
+        var nodeName = this.node.name;
+        console.log("cur nodeName is {}",nodeName);
+        if(nodeName== 'gameOver'){
+            this.node.active = false;
+        }
+        
     }
 
-    clickButton(){
+    clickButton() {
         console.info("click")
+        cc.director.loadScene('Bird');
+    }
+
+    clickStartButton() {
+        console.info("clickStartButton");
+
         cc.director.loadScene('Bird');
     }
 }

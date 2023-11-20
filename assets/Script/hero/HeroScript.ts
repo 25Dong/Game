@@ -7,23 +7,36 @@ const State = {
     stand: 1,
     attack: 2
 }
+/**
+ * Hero
+ */
 @ccclass
-export default class NewClass extends cc.Component {
+export default class Hero extends cc.Component {
 
+    /**
+     * 状态（默认为站立状态）
+     */
+    private heroSate: number = State.stand;
+    /**
+     * 移动方向向量
+     */
+    private sp: cc.Vec2 = cc.v2(0, 0);
+    /**
+     * 移动速度
+     */
     @property
-    heroSate: number = State.stand;
-
-    sp: cc.Vec2 = cc.v2(0, 0);
-
-    speed: number = 200;
-
-    //当前播放的动画
-    curPlayerAnima: string = 'idle';
-
-    //动画组件
-    animationComponent: cc.Animation;
+    private speed: number = 200;
+    /**
+     * 当前播放的动画
+     */
+    private curPlayerAnima: string = 'idle';
+    /**
+     * 动画组件
+     */
+    private animationComponent: cc.Animation;
 
     onLoad() {
+        //绑定事件
         cc.systemEvent.on('keydown', this.onKeyDown, this);
         cc.systemEvent.on('keyup', this.onKeyUp, this);
 
@@ -31,8 +44,9 @@ export default class NewClass extends cc.Component {
     }
 
     onDestroy() {
-        cc.systemEvent.on('keydown', this.onKeyDown, this);
-        cc.systemEvent.on('keyup', this.onKeyUp, this);
+        //解绑事件
+        cc.systemEvent.off('keydown', this.onKeyDown, this);
+        cc.systemEvent.off('keyup', this.onKeyUp, this);
     }
 
     onKeyDown(e) {
@@ -48,8 +62,9 @@ export default class NewClass extends cc.Component {
     }
 
     update(dt) {
-        let _anima = this.curPlayerAnima;
-
+        //播放的动画
+        let _anima: string;
+        
         let scaleX = Math.abs(this.node.scaleX);
         let lv = this.node.getComponent(cc.RigidBody).linearVelocity;
         if (Input[cc.macro.KEY.a] || Input[cc.macro.KEY.left]) {

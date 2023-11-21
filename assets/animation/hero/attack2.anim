@@ -1,0 +1,55 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "attack2",
+  "_objFlags": 0,
+  "_native": "",
+  "_duration": 0.6,
+  "sample": 10,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "6a9869d4-0aa8-4c31-a47e-cf32b240f114"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "8918f0e2-e839-466d-90bc-2d8a04e19a10"
+            }
+          },
+          {
+            "frame": 0.2,
+            "value": {
+              "__uuid__": "3def017d-8c65-4375-a8c7-ac150a75d491"
+            }
+          },
+          {
+            "frame": 0.3,
+            "value": {
+              "__uuid__": "311a7de7-cac1-4c34-a5d9-442035a998fc"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "ae7a43c5-9635-4a63-ad96-a8bd66c9ee51"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "94b31a30-a473-4117-83c5-c8379966b254"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}
